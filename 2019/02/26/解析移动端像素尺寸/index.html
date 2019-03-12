@@ -113,7 +113,7 @@
 <p>逻辑像素——视觉上固定的物理长度。iOS系统中逻辑像素单位是pt,Android系统中是dp。 </p>
 <p>物理像素——设备硬件可以达到的像素数量，和渲染的精细度有关。</p>
 <p>渲染像素——软件可以达到的像素数量，有时比物理像素高。</p>
-<p><img src="D:\yannis-z.github.io\public\images\scale\device.jpg" alt="device"></p>
+<p><img src="/2019/02/26/解析移动端像素尺寸/device.jpg" alt="device"></p>
 <center style="color:#9fa0a0;font-size:14px;">（图片来源于网络）</center>
 
 
@@ -130,7 +130,7 @@
 </li>
 </ul>
 <p>​    <strong>注意</strong>：PS中的DPI常指PPI </p>
-<p><img src="D:\yannis-z.github.io\public\images\scale\PPI.jpg" alt="PPI"></p>
+<p><img src="/2019/02/26/解析移动端像素尺寸/D:/yannis-z.github.io\public\images\scale\PPI.jpg" alt="PPI"></p>
 <h4 id="二、应用及问题"><a href="#二、应用及问题" class="headerlink" title="二、应用及问题"></a>二、应用及问题</h4><h5 id="IOS平台"><a href="#IOS平台" class="headerlink" title="IOS平台"></a><strong>IOS平台</strong></h5><ul>
 <li><p><strong>设计应用 (单位：px)</strong></p>
 <p>界面的设计尺寸——按1倍或2倍的逻辑分辨率设计（一般设计一稿）。</p>
@@ -151,7 +151,7 @@
 <li><p><strong>问题</strong></p>
 <p><strong>1）</strong>渲染分辨率与逻辑分辨率的关系是什么？</p>
 <p>渲染分辨率（px）和逻辑分辨率（pt）成比例（2或3倍），这意味着设备中1pt就会有2个或者3个像素去渲染，如下图所示。</p>
-<p><img src="D:\yannis-z.github.io\public\images\scale\px.jpg" alt="px"></p>
+<p><img src="/2019/02/26/解析移动端像素尺寸/D:/yannis-z.github.io\public\images\scale\px.jpg" alt="px"></p>
 </li>
 </ul>
 <p>  <strong>2）</strong>界面的设计尺寸为什么可以参考逻辑分辨率和渲染分辨率，但不参考物理分辨率?  </p>
@@ -166,7 +166,7 @@
 <p>​    规范统一了界面的视觉，使得特定元素在不同设备上有基本一致的视觉大小。</p>
 <p>​    如下图所示，@2x和@3x的设备对应特定元素的不同尺寸，为1.5倍的关系。由上述1）可知，渲染分辨率和    逻辑分辨率（开发尺寸）成比例（2或3倍），设备中1pt就会有2个或者3个像素去渲染。所以开发时我们需要    根据设计稿的倍率，将尺寸除以相应的倍率进行应用，这些元素的尺寸（比如导航栏高度、标签栏高度、图    标大小等）在除以对应的倍率后数值一致，所以显示在屏幕上的大小也基本相同。但是不同的设备中元素的    实际尺寸（视觉上看到的尺寸）不一定全相同，因为PPI不同，一个像素的实际大小也受影响。</p>
 <p>​    <strong>注：</strong>倍率相同的设备PPI不一定相同，所以那些特定元素的视觉大小也会有差异。</p>
-<p><img src="D:\yannis-z.github.io\public\images\scale\ios_scale.jpg" alt="ios_scale"></p>
+<p><img src="/2019/02/26/解析移动端像素尺寸/D:/yannis-z.github.io\public\images\scale\ios_scale.jpg" alt="ios_scale"></p>
 <center style="color:#9fa0a0;font-size:14px;">(图片来源：<a href="https://uiiiuiii.com/screen/ios.htm" target="_blank" rel="noopener">https://uiiiuiii.com/screen/ios.htm</a>)</center>
 
 
@@ -175,7 +175,7 @@
 <ul>
 <li><p><strong>设计应用(单位：px)</strong></p>
 <p>画布设置——采用了几种主流的PPI和对应的屏幕像素。</p>
-<p><img src="/images/placeholder.png" alt="Android_scale" data-src="D:\yannis-z.github.io\public\images\scale\Android_scale.jpg" class="lazyload"></p>
+<p><img src="/images/placeholder.png" alt="Android_scale" data-src="/2019/02/26/解析移动端像素尺寸/D:/yannis-z.github.io\public\images\scale\Android_scale.jpg" class="lazyload"></p>
 <center style="color:#9fa0a0;font-size:14px;">(图片来源：<a href="https://uiiiuiii.com/screen/android.htm" target="_blank" rel="noopener">https://uiiiuiii.com/screen/android.htm</a>)</center>
 
 
