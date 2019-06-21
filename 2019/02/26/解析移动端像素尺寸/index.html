@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  解析移动端像素尺寸 |   Hello </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-inner">        
+
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <div class="header-logo">
+      <a href="/">
+        <img class="header-logo-img" src="/images/logo.png">
+      </a>
+    </div>
+
+    <div class="header-menu">          
+              
+          
+            <a class="header-menu-link" id="header-menu-home" href="/">
+              <i class="iconfont icon-home">  
+            </i></a>     
+          
+              
+          
+            <a class="header-menu-link" id="header-menu-archives" href="/archives">
+              <i class="iconfont icon-archives">  
+            </i></a>     
+          
+              
+          
+            <a class="header-menu-link" id="header-menu-tags" href="/tags">
+              <i class="iconfont icon-tags">  
+            </i></a>     
+          
+              
+          
+            <a class="header-menu-link" id="header-menu-about" href="/about">
+              <i class="iconfont icon-about">  
+            </i></a>     
+          
+              
+          
+              <a class="header-menu-link" id="header-menu-search">
+                <i class="iconfont icon-search">  
+              </i></a>
+          
+                  
+    </div>  
+    
+  </nav>
+</header>
+
+   
+
+      <div class="container">       
+          
+          
+            <div class="container-inner">  
+          
+
+          <article class="post">
+  
+	
+<div class="post-header">
+	<p class="post-title">	
+		解析移动端像素尺寸
+	</p>
+
+	<div class="post-info">	
+		<span class="post-info-entry">
+			2月 26, 2019
+		</span>
+
+		
+		
+			<i class="iconfont icon-words"></i>
+			<span class="post-info-entry">2312
+			</span>
+		
+	</div>
+</div> 
+	
+ 
+
+	  <div class="typo post-content slideDownMin">
+
+		
+
+			
+					<h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><ul>
+<li>基础概念：像素/分辨率</li>
+<li>应用及问题（ios/Android）：设计/开发</li>
+</ul>
+<a id="more"></a>
+<h4 id="一、基础概念"><a href="#一、基础概念" class="headerlink" title="一、基础概念"></a>一、基础概念</h4><ul>
+<li><p><strong>逻辑像素（pt/dp）、物理像素（px）、渲染像素（px）</strong></p>
+<p>逻辑像素——视觉上固定的物理长度。iOS系统中逻辑像素单位是pt,Android系统中是dp。 </p>
+<p>物理像素——设备硬件可以达到的像素数量，和渲染的精细度有关。</p>
+<p>渲染像素——软件可以达到的像素数量，有时比物理像素高。</p>
+<p><img src="/2019/02/26/解析移动端像素尺寸/device.jpg" alt="device"></p>
+<center style="color:#9fa0a0;font-size:14px;">（图片来源于网络）</center>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p><strong>逻辑分辨率（pt/dp）、物理分辨率（px）、渲染分辨率（px）、PPI、DPI</strong></p>
+<p>逻辑分辨率——视觉的固定宽度*高度</p>
+<p>物理分辨率——横像素数*竖像素数（硬件可达到的像素数量）</p>
+<p>渲染分辨率（显示分辨率）——横像素数竖像素数（软件可达到的像素数量）</p>
+<p>PPI（图像分辨率、屏幕像素密度）——Pixel Per Inch（像素每英寸）</p>
+<p>DPI（常用于表示印刷精度）——Dots Per Inch（点每英寸）</p>
+</li>
+</ul>
+<p>​    <strong>注意</strong>：PS中的DPI常指PPI </p>
+<p><img src="/2019/02/26/解析移动端像素尺寸/PPI.jpg" alt="PPI"></p>
+<h4 id="二、应用及问题"><a href="#二、应用及问题" class="headerlink" title="二、应用及问题"></a>二、应用及问题</h4><h5 id="IOS平台"><a href="#IOS平台" class="headerlink" title="IOS平台"></a><strong>IOS平台</strong></h5><ul>
+<li><p><strong>设计应用 (单位：px)</strong></p>
+<p>界面的设计尺寸——按1倍或2倍的逻辑分辨率设计（一般设计一稿）。</p>
+<p><strong>注：</strong>“2倍的逻辑分辨率”即指部分渲染分辨率。</p>
+</li>
+</ul>
+<p>  特定元素的设计尺寸——参考ios规范和界面的设计尺寸（1倍或2倍）。</p>
+<p>  <strong>注：</strong>“特定元素尺寸”有标签栏高度、导航栏高度、图标尺寸等。</p>
+<p>  切片尺寸——按渲染分辨率（2倍和3倍的逻辑分辨率）导出两套切片尺寸。</p>
+<p>  <strong>注：</strong>“切片”指图标和图片。</p>
+<p>  适配尺寸——如果采用1倍的逻辑分辨率设计尺寸，则根据不同设备<u>逻辑分辨率</u>的尺寸差别进行调整；如果采用2倍的逻辑分辨率（@2X）设计尺寸，在向上适配（@3X）时需要先统一倍率（×1.5），再根据设备<u>渲染分辨率</u>的尺寸差别进行调整。</p>
+<ul>
+<li><p><strong>开发应用（单位：pt /  字体单位：px） </strong></p>
+<p>所有元素尺寸——按逻辑分辨率（pt）开发。如果是一倍率设计图，则无需换算；如果是2倍率设计图，则需要把图中以px为单位标注的尺寸除以2。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>问题</strong></p>
+<p><strong>1）</strong>渲染分辨率与逻辑分辨率的关系是什么？</p>
+<p>渲染分辨率（px）和逻辑分辨率（pt）成比例（2或3倍），这意味着设备中1pt就会有2个或者3个像素去渲染，如下图所示。</p>
+<p><img src="/2019/02/26/解析移动端像素尺寸/px.jpg" alt="px"></p>
+</li>
+</ul>
+<p>  <strong>2）</strong>界面的设计尺寸为什么可以参考逻辑分辨率和渲染分辨率，但不参考物理分辨率?  </p>
+<p>  大部分情况，渲染分辨率等于物理分辨率，有些机型渲染分辨率会超出物理分辨率,也就是软件呈现的像素量超过了硬件能达到的像素量,手机按屏幕可呈现的像素渲染，所以一般参考渲染分辨率。</p>
+<p>  由于渲染分辨率和逻辑分辨率成比例，所以我们也可以按逻辑分辨率来设计。因此界面的设计尺寸会采用1倍或者2倍的逻辑分辨率。</p>
+<p>  <strong>注：</strong>只有矢量软件（ai、sketch）绘制界面时可采用一倍率尺寸，因为输出切片需乘以相应倍率（2和3）。如果位图软件（ps）也采用一倍率，输出切片会模糊。</p>
+<p>  <strong>3）</strong>为什么界面的设计尺寸不采用3倍的逻辑分辨率？</p>
+<p>  如果采用3倍的逻辑分辨率，设计尺寸需考虑3的倍数。适配2倍率的逻辑分辨率时需乘以2/3，在开发时也需除以3，换算不便。</p>
+<p>​    <strong>4）</strong>为什么一般ps中的画布中DPI都设置成72？</p>
+<p>​    Photoshop中, DPI概念等同PPI，也就是屏幕分辨密度。已知1pt=1/72Inch, ppi=px/1Inch,所以当ppi=72时，    画布中1px=1pt，而手机屏幕上1pt可能包含2或者3个像素，因此一个像素在实际手机屏幕上的尺寸总是小于    1pt。画布设置的1px=1pt，但实际所需又不足1pt，所以导出的图片尺寸总是大于屏幕需要的尺寸，图片在屏    幕中不会被拉伸，只可能被压缩，不会出现模糊情况，安卓中也是同理。因此72ppi已经足够使用，并且已经    被公认，不需要设置更高的数值。</p>
+<p>​    <strong>5）</strong>为什么特定的元素有规范？</p>
+<p>​    规范统一了界面的视觉，使得特定元素在不同设备上有基本一致的视觉大小。</p>
+<p>​    如下图所示，@2x和@3x的设备对应特定元素的不同尺寸，为1.5倍的关系。由上述1）可知，渲染分辨率和    逻辑分辨率（开发尺寸）成比例（2或3倍），设备中1pt就会有2个或者3个像素去渲染。所以开发时我们需要    根据设计稿的倍率，将尺寸除以相应的倍率进行应用，这些元素的尺寸（比如导航栏高度、标签栏高度、图    标大小等）在除以对应的倍率后数值一致，所以显示在屏幕上的大小也基本相同。但是不同的设备中元素的    实际尺寸（视觉上看到的尺寸）不一定全相同，因为PPI不同，一个像素的实际大小也受影响。</p>
+<p>​    <strong>注：</strong>倍率相同的设备PPI不一定相同，所以那些特定元素的视觉大小也会有差异。</p>
+<p><img src="/2019/02/26/解析移动端像素尺寸/ios_scale.jpg" alt="ios_scale"></p>
+<center style="color:#9fa0a0;font-size:14px;">(图片来源：<a href="https://uiiiuiii.com/screen/ios.htm" target="_blank" rel="noopener">https://uiiiuiii.com/screen/ios.htm</a>)</center>
+
+
+
+<p><strong>安卓平台</strong></p>
+<ul>
+<li><p><strong>设计应用(单位：px)</strong></p>
+<p>画布设置——采用了几种主流的PPI和对应的屏幕像素。</p>
+<p><img src="/images/placeholder.png" alt="Android_scale" data-src="/2019/02/26/解析移动端像素尺寸/Android_scale.jpg" class="lazyload"></p>
+<center style="color:#9fa0a0;font-size:14px;">(图片来源：<a href="https://uiiiuiii.com/screen/android.htm" target="_blank" rel="noopener">https://uiiiuiii.com/screen/android.htm</a>)</center>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p><strong>开发应用（常用单位：dp / 字体单位：sp）</strong></p>
+<p>1DP定义为屏幕像素密度为160PPI时的1px。</p>
+<p>在MDPI时，1PD=1PX，所以1DP的尺寸是固定的。开发中Android系统会根据几种典型的屏幕像素密度进行适配。</p>
+</li>
+<li><p><strong>设计问题</strong></p>
+<p>为什么安卓平台不和ios一样有几种固定的屏幕分辨率？</p>
+<p>由于安卓手机屏幕碎片化严重（存在太多的屏幕分辨率），所以人们把各种设备的屏幕像素密度（PPI）划成了多个范围区间，给不同范围的设备定义了不同的分辨率和比例，来保证同一范围内的设备有相近的显示效果（视觉上的物理尺寸相近）。另外，在不同的PPI下对一些图标也有一些固定的尺寸规范。</p>
+</li>
+</ul>
+<p></p><p style="color:grey;">版权声明：转载或者引用本文内容需注明来源</p>
+  	
+					
+	  </div>     
+	  
+
+	<div class="post-footer">
+
+
+  <div class="post-footer-other">
+    
+      <span class="post-footer-item">
+        
+
+
+<span class="donate-btn">
+	<span class="iconfont icon-donate"></span>
+</span>
+
+<div id="donate-box" class="sildeUpMin">
+
+	<span class="donate-cancel iconfont icon-cancel"></span>
+
+	<div class="donate-img-box">
+		<img id="donate-qr-wechat" class="noLazyLoad donate-img lazyload" src="/images/placeholder.png" alt="No Donate Image!" data-src="/images/donate1.png">	
+		<img id="donate-qr-alipay" class="noLazyLoad donate-img lazyload" src="/images/placeholder.png" alt="No Donate Image!" data-src="/images/donate2.png">	
+	</div>
+
+	<span class="donate-word">世界美好 你也是</span>
+
+	<div class="donate-list">
+		<span class="iconfont icon-donate-wechat"></span>
+		<span class="iconfont icon-donate-alipay"></span>
+	</div>
+
+</div>
+ 
+      </span>        
+       
+    
+      <span class="post-footer-item">
+        <span class="share-btn">
+	<span class="iconfont icon-share"></span>
+</span>
+<div class="-mob-share sildeUpMin">
+	<ul class="-mob-inner">
+	   			             
+        <li class="iconfont 
+		icon-share-qq 
+		-mob-share-qq 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-weixin 
+		-mob-share-weixin 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-weibo 
+		-mob-share-weibo 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-douban 
+		-mob-share-douban 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-facebook 
+		-mob-share-facebook 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-twitter 
+		-mob-share-twitter 
+		-mob-share-link"></li>		
+   	   			             
+        <li class="iconfont 
+		icon-share-google 
+		-mob-share-google 
+		-mob-share-link"></li>		
+   	   
+	</ul>
+</div>	
+
+
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+      </span>  
+               
+  </div>  
+    
+
+
+  <div class="post-footer-meta">
+        	
+
+        
+          <i class="iconfont icon-tag"></i>     
+            <a class="tag-link" href="/tags/UI/">UI</a>    
+        	
+  </div>
+
+</div>
+
+
+<nav class="post-footer-nav">
+  <div class="post-footer-link">
+  
+      <a href="/2019/02/26/hello-world/" id="post-nav-older" class="post-nav-link-wrap">
+        <strong class="post-nav-caption">older</strong>
+        
+          <a class="post-nav-title" href="/2019/02/26/hello-world/">
+          Hello World</a>
+      </a>
+  
+  </div>
+  <div class="post-footer-link">
+    
+        <a href="/2019/06/20/篇一 应用设计中常犯的十大错误/" id="post-nav-newer" class="post-nav-link-wrap">
+          <strong class="post-nav-caption">newer</strong>
+             
+            <a class="post-nav-title" href="/2019/06/20/篇一 应用设计中常犯的十大错误/">
+            篇一  应用设计中常犯的十大错误</a>
+        </a>
+    
+  </div>
+
+</nav>
+ 
+	
+	
+</article>
+
+          </div> 
+      </div>            
+    
+    <a id="page-backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+    <div class="search-container sildeUpMin">
+        <div class="search-header">
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">
+            <span class="search-cancel">
+                <i class="iconfont icon-cancel">
+            </i></span>
+        </div>
+        <div id="search-result" class="search-result"></div>
+    </div>
+ 
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">首页
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">归档
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">标签
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">关于
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>        
+    
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+				
+		2018-
+		
+		2019		
+	
+		Lemon
+		<br>
+
+		Theme  <a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>
+		</div>			
+	 
+</footer>   
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>
