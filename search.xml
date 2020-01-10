@@ -5,7 +5,7 @@
     <entry>
       <title>:title.md</title>
       <link href="/2020/01/10/title-md/"/>
-      <content type="html"><![CDATA[<p><img src="/2020/01/10/title-md/:title/:one.jpg" alt="noe">)</p><p><img src="/2020/01/10/title-md/:title/:one.jpg" alt="one"></p><p><img src="/2020/01/10/title-md/:title/:one.jpg" alt="one"></p><p><img src="/2020/01/10/title-md/:title/:one.jpg" alt="one"></p><p><img src="/2020/01/10/title-md/:title/:one.jpg" alt="one"></p>]]></content>
+      <content type="html"><![CDATA[<p><img src="/2020/01/10/title-md/one.jpg" alt="noe"></p><p><img src="/2020/01/10/title-md/:title/:one.jpg" alt="one"></p><p><img src="/2020/01/10/title-md/:title/:one.jpg" alt="one"></p><p><img src="/2020/01/10/title-md/:title/:one.jpg" alt="one"></p><p><img src="/2020/01/10/title-md/:title/:one.jpg" alt="one"></p>]]></content>
       
       
     </entry>
